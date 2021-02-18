@@ -12,6 +12,7 @@ class Post extends Component {
 
         axios.get('https://jsonplaceholder.typicode.com/posts/' + id)
             .then(res => {
+                console.log(res.data)
                 this.setState({
                     post: res.data
                 })

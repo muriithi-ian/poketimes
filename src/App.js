@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { BrowserRouter, Route } from 'react-router-dom'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Home from './components/Home';
 import About from './components/About';
 import Contact from './components/Contact';
@@ -14,11 +14,14 @@ class App extends Component {
       <BrowserRouter>
         <div className="App">
           <Navbar />
-          <Route exact path='/' component={Home} />
-          <Route path='/about' component={About} />
-          <Route path='/posts' component={Posts} />
-          <Route exact path='/post/:post_id' component={Post} />
-          <Route path='/contact' component={Contact} />
+
+          <Switch>
+            <Route exact path='/' component={Home} />
+            <Route path='/about' component={About} />
+            <Route path='/posts' component={Posts} />
+            <Route path='/contact' component={Contact} />
+            <Route path='/:post_id' component={Post} />
+          </Switch>
 
         </div>
       </BrowserRouter>

@@ -25,7 +25,7 @@ class Posts extends Component {
 
                     <div className="post card" id={post.id} key={post.id} >
                         <div className="card-content">
-                            <Link to={'/post/' + post.id}>
+                            <Link to={'/' + post.id}>
                                 <span className="card-title">{post.title}</span>
                             </Link>
                             <p>{post.body}</p>
