@@ -3,44 +3,38 @@ import axios from 'axios'
 import Rainbow from '../hoc/Rainbow'
 
 
-class Posts extends Component {
+class Post extends Component {
     state = {
-        posts: []
+        post: null
     }
     componentDidMount() {
-        axios.get('https://jsonplaceholder.typicode.com/posts')
+        let id = this.props.match.params.post_id;
+
+        axios.get('https://jsonplaceholder.typicode.com/posts/' + id)
             .then(res => {
                 this.setState({
-                    posts: res.data.slice(0, 20)
+                    post: res.data
                 })
             })
     }
 
     render() {
-        const { posts } = this.state;
-        const postList = posts.length ? (
-            posts.map(post => {
-                return (
-                    <div className="post card" key={post.id}>
-                        <div className="card-content">
-                            <span className="card-title">{post.title}</span>
-                            <p>{post.body}</p>
-                        </div>
-                    </div>
-                )
-            })
+        const post = this.state.post ? (
+            < div className="post" >
+                <h3 className="center">{this.state.post.title}</h3>
+                <p>{this.state.post.body}</p>
+            </div >
         ) : (
                 <div className="center">
-                    No Posts Yet
+                    Post loading ...
                 </div>
             )
         return (
-            <div>
-                <h4 className="center">Posts</h4>
-                {postList}
+            <div className="container">
+                {post}
             </div>
         )
     }
 }
 
-export default Rainbow(Posts)
+export default Rainbow(Post)
