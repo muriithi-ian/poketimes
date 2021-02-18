@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import axios from 'axios'
-import Rainbow from '../hoc/Rainbow'
+// import axios from 'axios'
+// import Rainbow from '../hoc/Rainbow'
 import Pokeball from '../pokeball.png'
 import { connect } from 'react-redux'
+import { deletePost } from "../actions/PostActions";
 
 class Post extends Component {
     handleClick = () => {
@@ -46,10 +47,9 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         deletePost: (id) => {
-            dispatch({
-                type: 'DELETE_POST',
-                id: id
-            })
+            dispatch(
+                deletePost(id)
+            )
         }
     }
 }
