@@ -14,7 +14,7 @@ class Posts extends Component {
         axios.get('https://jsonplaceholder.typicode.com/posts')
             .then(res => {
                 this.setState({
-                    posts: res.data
+                    posts: res.data.slice(0, 10)
                 })
             })
     }
